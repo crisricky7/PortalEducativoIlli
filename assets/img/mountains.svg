@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="mountainBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b3352" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0c1a2e" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="mountainFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12263f" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0c1a2e" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#d4b96a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Montaña trasera -->
+  <path fill="url(#mountainBack)"
+        d="M0,220 L0,150 L140,95 L260,135 L400,70 L520,120 L660,55 L800,115 L940,75 L1080,130 L1220,85 L1360,125 L1440,100 L1440,220 Z"/>
+
+  <!-- Montaña delantera con picos nevados (Ilinizas) -->
+  <path fill="url(#mountainFront)"
+        d="M0,220 L0,175 L180,120 L320,170 L470,90 L610,160 L760,70 L900,150 L1050,105 L1200,165 L1320,130 L1440,160 L1440,220 Z"/>
+
+  <!-- Nieves en los picos -->
+  <path fill="url(#snow)"
+        d="M470,90 L508,118 L470,128 L452,112 Z"/>
+  <path fill="url(#snow)"
+        d="M760,70 L800,102 L760,112 L742,94 Z"/>
+  <path fill="url(#snow)"
+        d="M1050,105 L1086,128 L1050,138 L1036,122 Z"/>
+</svg>
