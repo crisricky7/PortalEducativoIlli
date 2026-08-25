@@ -2,25 +2,29 @@
 
 Rediseño completo del portal educativo de la **Unidad Educativa Particular Los Ilinizas** (https://ilinizas.edu.ec/).
 
+> **Fuente del contenido:** la información se tomó directamente del sitio en producción
+> (https://ilinizas.edu.ec/) con acceso HTTPS real, incluyendo los documentos institucionales
+> **2026–2027**, las listas de útiles del nuevo año lectivo y el portal académico Academium.
+
 ## Problemas resueltos
 
 ### 1. Lentitud de carga (causa raíz)
-El sitio original corría sobre **WordPress 6.8 + Elementor 3.28.4** con el tema Twenty Twenty-Two, lo que implica:
+El sitio original corre sobre **WordPress 6.8 + Elementor 3.28.4** con el tema Twenty Twenty-Two, lo que implica:
 
 - Decenas de archivos JS/CSS de Elementor cargados en cada página
 - jQuery y librerías de widgets innecesarios
 - Google Fonts remoto (render-blocking)
-- HTML inflado (~88 KB solo el home)
+- HTML inflado (~94 KB solo el home)
 
 **Solución:** sitio 100% estático (HTML + CSS + JS vanilla, sin frameworks ni dependencias externas):
 
 | Recurso | Antes | Ahora |
 |---|---|---|
 | CMS | WordPress + Elementor | HTML estático puro |
-| JS | jQuery + Elementor (cientos de KB) | 1 archivo vanilla (~4 KB) |
+| JS | jQuery + Elementor (cientos de KB) | 1 archivo vanilla (~7 KB) |
 | CSS | Múltiples hojas de tema/plugins | 1 hoja optimizada |
 | Fuentes | Google Fonts remoto | Auto-hospedadas (woff2, 87 KB) |
-| Peso página home | ~88 KB HTML + plugins | ~20 KB HTML |
+| Peso página home | ~94 KB HTML + plugins | ~39 KB HTML |
 
 Resultado: carga instantánea, sin peticiones bloqueantes a terceros.
 
@@ -34,15 +38,25 @@ El diseño nuevo toma como referencia portales de escuelas secundarias privadas 
 - Navegación limpia con dropdown, footer rico en información
 - Animaciones sutiles (scroll reveal, contadores), 100% accesibles (respetan `prefers-reduced-motion`)
 
-### 3. Enlaces externos conservados
+### 3. Contenido actualizado (2026–2027)
+- **Documentos institucionales actualizados** (descargados del sitio en producción y auto-hospedados):
+  Acuerdo de Costos 2026–2027, Presupuesto Anual 2026–2027, Costos de Transporte 2026–2027,
+  Consentimiento DECE, Consentimiento Inspección, Contrato de Prestación de Servicios 2026–2027.
+- **Nueva página "Lista de Útiles"** (`lista-de-utiles.html`) con las 15 listas por nivel
+  (Inicial I/II, Preparatoria, 2º–10º EGB, 1º–3º BGU) enlazadas al sitio de producción.
+- **Temarios de admisión** (EGB Elemental, Media, Superior, BGU) descargados y auto-hospedados.
+- **Portal Académico Academium** (https://portal.ilinizas.academium.ec) enlazado en el footer.
+
+### 4. Enlaces externos conservados
 Todos los enlaces externos del sitio original se mantienen:
 
 - **Preinscripción en línea:** https://ilinizas.runacode.com/public/preinscripcionesweb
+- **Portal Académico:** https://portal.ilinizas.academium.ec
 - **Facebook:** https://www.facebook.com/profile.php?id=100044144316444
 - **Instagram:** https://www.instagram.com/uelosilinizas/
 - **YouTube:** https://www.youtube.com/channel/UCAbHQQJ72726z8gRxhGn6WA
 - **WhatsApp:** https://wa.me/593983476998
-- **Documentos PDF:** Acuerdo de Costos, Costos Adicionales (locales en `assets/docs/`) y el resto (Propuesta Pedagógica, Consentimientos DECE/Inspección, Contrato) enlazados al sitio actual hasta migrarlos.
+- **Listas de útiles** (15 PDFs por nivel, enlazados al sitio actual por su tamaño ~4 MB c/u)
 
 ## Estructura del proyecto
 
@@ -54,13 +68,14 @@ Todos los enlaces externos del sitio original se mantienen:
 ├── egb-media.html             # Nivel: EGB Media
 ├── egb-superior.html          # Nivel: EGB Superior / BGU
 ├── inscripciones.html         # Proceso de admisión + FAQ
+├── lista-de-utiles.html       # Listas de útiles 2026–2027 + temarios de admisión
 ├── contacto.html              # Formulario, WhatsApp, mapa
 └── assets/
     ├── css/styles.css         # Hoja de estilos única
     ├── js/main.js             # JS vanilla (menú, reveal, contadores)
     ├── fonts/                 # Playfair Display + Inter (woff2)
     ├── img/                   # Logo, ilustraciones SVG, favicon
-    └── docs/                  # PDFs institucionales (acuerdo, costos)
+    └── docs/                  # PDFs institucionales 2026–2027 + temarios
 ```
 
 ## Cómo ejecutar localmente
