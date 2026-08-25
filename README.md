@@ -80,6 +80,43 @@ php -S localhost:8000
 
 Luego abre http://localhost:8000
 
+### Ejecutar con HTTPS local (recomendado)
+
+El navegador marca "No seguro" los sitios servidos por HTTP plano. Para ver el portal
+con cifrado TLS local ya hay un certificado autofirmado en `.certs/localhost.pfx`
+(válido para `localhost` y `127.0.0.1`, 1 año):
+
+```bash
+# Servidor HTTPS en el puerto 8443
+node -e "const https=require('https'),fs=require('fs');const t={'.html':'text/html','.css':'text/css','.js':'text/javascript','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2','.pdf':'application/pdf'};https.createServer({pfx:fs.readFileSync('.certs/localhost.pfx'),passphrase:'ilinizas2025'},(req,res)=>{let p=decodeURIComponent(req.url.split('?')[0]);if(p==='/')p='/index.html';const f=require('path').join(process.cwd(),p);fs.readFile(f,(e,d)=>{if(e){res.writeHead(404);return res.end();}res.writeHead(200,{'Content-Type':t[require('path').extname(f)]||'application/octet-stream'});res.end(d);});}).listen(8443,()=>console.log('HTTPS en https://localhost:8443'));"
+```
+
+Luego abre **https://localhost:8443** y acepta la advertencia del certificado autofirmado
+(botón "Avanzado → Continuar"). Para que el navegador confíe sin advertencia, instala
+`.certs/localhost.crt` en el almacén "Entidades de certificación de raíz de confianza".
+
+> Los certificados de `.certs/` son solo para desarrollo local y están excluidos de Git.
+
+### HTTPS en producción
+
+El sitio de producción (ilinizas.edu.ec) ya redirige HTTP → HTTPS (código 301) y su
+puerto 443 está activo. Para garantizar un certificado válido y confiable en el hosting:
+
+1. **Certificado Let's Encrypt** (gratuito): si el hosting es cPanel, usa la opción
+   "SSL/TLS Status" → "Run AutoSSL", o `certbot --nginx`/`certbot --apache` si tienes
+   acceso SSH.
+2. **Forzar HTTPS** en `.htaccess` del hosting:
+   ```apache
+   RewriteEngine On
+   RewriteCond %{HTTPS} off
+   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+   ```
+3. **HSTS** (opcional, una vez confirmado que HTTPS funciona estable):
+   ```apache
+   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+   ```
+4. Verifica con https://www.ssllabs.com/ssltest/ que el certificado tenga grado A/A+.
+
 ## Mejoras futuras sugeridas
 
 1. **Conectar el formulario de contacto** a un backend (Formspree, email JS, o endpoint propio).
