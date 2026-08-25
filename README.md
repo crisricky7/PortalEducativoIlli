@@ -80,21 +80,27 @@ Todos los enlaces externos del sitio original se mantienen:
 
 ## Publicación (en vivo)
 
-El portal está publicado actualmente en:
+El portal está publicado de forma **permanente en GitHub Pages**:
 
-| Entorno | URL | Puerto |
+| Entorno | URL | Estado |
 |---|---|---|
-| **Internet (público)** | https://crazy-poets-press.loca.lt | 9123 (vía túnel) |
-| **Red Wi-Fi local (LAN)** | http://192.168.100.230:9123 | 9123 |
-| **Local (HTTPS)** | https://localhost:8443 | 8443 |
-| **Local (HTTP)** | http://127.0.0.1:8080 | 8080 |
+| **🌍 GitHub Pages (definitivo)** | **https://crisricky7.github.io/PortalEducativoIlli/** | ✅ Activo |
+| Red Wi-Fi local (LAN) | http://192.168.100.230:9123 | Opcional |
+| Local (HTTPS) | https://localhost:8443 | Desarrollo |
+| Local (HTTP) | http://127.0.0.1:8080 | Desarrollo |
+
+### Despliegue en GitHub Pages
+- El repositorio es público (`crisricky7/PortalEducativoIlli`) y Pages está habilitado con
+  GitHub Actions como origen de despliegue.
+- El workflow `.github/workflows/pages.yml` despliega automáticamente cada `git push` a `main`.
+- El sitio usa rutas relativas (`assets/...`, `*.html`), compatibles con el subdirectorio
+  `/PortalEducativoIlli/` de GitHub Pages.
+- URL del sitio: https://crisricky7.github.io/PortalEducativoIlli/
 
 ### Notas de publicación
-- **Internet:** el túnel `localtunnel` expone el servidor local del puerto 9123. La URL
-  cambia cada vez que se reinicia el túnel (dominio aleatorio `*.loca.lt`). El script
-  `scripts/tunnel.js` mantiene el túnel vivo y lo reinicia automáticamente si se cae;
-  ejecutarlo con `node scripts/tunnel.js` para que imprima la URL vigente. Para una URL
-  fija se recomienda Cloudflare Tunnel, ngrok con dominio reservado, o desplegar en un hosting.
+- **Internet (GitHub Pages):** URL permanente y gratuita, con HTTPS incluido. Cada push a `main`
+  despliega automáticamente vía el workflow de Actions. Sin límite de tiempo ni necesidad de
+  mantener procesos locales corriendo.
 - **Red local:** el servidor escucha en `0.0.0.0:9123`, por lo que cualquier dispositivo de la
   misma red Wi-Fi puede acceder con `http://IP-de-esta-maquina:9123`. Se usó un puerto no típico
   (9123) para evitar conflictos con otras aplicaciones.
