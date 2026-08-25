@@ -78,6 +78,28 @@ Todos los enlaces externos del sitio original se mantienen:
     └── docs/                  # PDFs institucionales 2026–2027 + temarios
 ```
 
+## Publicación (en vivo)
+
+El portal está publicado actualmente en:
+
+| Entorno | URL | Puerto |
+|---|---|---|
+| **Internet (público)** | https://curvy-zebras-taste.loca.lt | 9123 (vía túnel) |
+| **Red Wi-Fi local (LAN)** | http://192.168.100.230:9123 | 9123 |
+| **Local (HTTPS)** | https://localhost:8443 | 8443 |
+| **Local (HTTP)** | http://127.0.0.1:8080 | 8080 |
+
+### Notas de publicación
+- **Internet:** el túnel `localtunnel` (npx) expone el servidor local del puerto 9123. La URL
+  cambia cada vez que se reinicia el túnel (dominio aleatorio `*.loca.lt`). Para una URL fija
+  se recomienda Cloudflare Tunnel, ngrok con dominio reservado, o desplegar en un hosting.
+- **Red local:** el servidor escucha en `0.0.0.0:9123`, por lo que cualquier dispositivo de la
+  misma red Wi-Fi puede acceder con `http://IP-de-esta-maquina:9123`. Se usó un puerto no típico
+  (9123) para evitar conflictos con otras aplicaciones.
+- **Firewall:** la regla de entrada para el puerto 9123 requiere permisos de administrador
+  (`netsh advfirewall firewall add rule name="Portal Ilinizas 9123" dir=in action=allow protocol=TCP localport=9123`).
+  Si otros equipos de la red no acceden, ejecutar ese comando como administrador.
+
 ## Cómo ejecutar localmente
 
 Cualquier servidor estático sirve el sitio. Ejemplos:
