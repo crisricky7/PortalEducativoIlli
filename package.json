@@ -1,0 +1,9 @@
+{
+  "name": "portal-educativo-illi",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/site.test.js",
+    "start": "python -m http.server 8080 --bind 127.0.0.1"
+  }
+}

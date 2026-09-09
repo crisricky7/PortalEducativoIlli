@@ -24,7 +24,7 @@ El sitio original corre sobre **WordPress 6.8 + Elementor 3.28.4** con el tema T
 | JS | jQuery + Elementor (cientos de KB) | 1 archivo vanilla (~7 KB) |
 | CSS | Múltiples hojas de tema/plugins | 1 hoja optimizada |
 | Fuentes | Google Fonts remoto | Auto-hospedadas (woff2, 87 KB) |
-| Peso página home | ~94 KB HTML + plugins | ~39 KB HTML |
+| Peso página home | ~94 KB HTML + plugins | ~45 KB HTML |
 
 Resultado: carga instantánea, sin peticiones bloqueantes a terceros.
 
@@ -66,13 +66,14 @@ Todos los enlaces externos del sitio original se mantienen:
 ├── educacion-inicial.html     # Nivel: Educación Inicial
 ├── educacion-elemental.html   # Nivel: EGB Elemental
 ├── egb-media.html             # Nivel: EGB Media
-├── egb-superior.html          # Nivel: EGB Superior / BGU
+├── egb-superior.html          # Nivel: EGB Superior (8º–10º)
+├── bachillerato.html           # Nivel: Bachillerato General Unificado (1º–3º)
 ├── inscripciones.html         # Proceso de admisión + FAQ
 ├── lista-de-utiles.html       # Listas de útiles 2026–2027 + temarios de admisión
 ├── contacto.html              # Formulario, WhatsApp, mapa
 └── assets/
     ├── css/styles.css         # Hoja de estilos única
-    ├── js/main.js             # JS vanilla (menú, reveal, contadores)
+    ├── js/main.js             # JS vanilla (menús, accesibilidad, acordeones, formulario)
     ├── fonts/                 # Playfair Display + Inter (woff2)
     ├── img/                   # Logo, ilustraciones SVG, favicon
     └── docs/                  # PDFs institucionales 2026–2027 + temarios
@@ -110,37 +111,18 @@ El portal está publicado de forma **permanente en GitHub Pages**:
 
 ## Cómo ejecutar localmente
 
-Cualquier servidor estático sirve el sitio. Ejemplos:
+El proyecto incluye scripts reproducibles y no requiere instalar dependencias:
 
 ```bash
-# Python
-python -m http.server 8000
-
-# Node
-npx serve .
-
-# PHP
-php -S localhost:8000
+npm test
+npm start
 ```
 
-Luego abre http://localhost:8000
+Luego abre **http://127.0.0.1:8080/**. También puede servirse con cualquier servidor HTTP estático.
 
-### Ejecutar con HTTPS local (recomendado)
+### Entorno local
 
-El navegador marca "No seguro" los sitios servidos por HTTP plano. Para ver el portal
-con cifrado TLS local ya hay un certificado autofirmado en `.certs/localhost.pfx`
-(válido para `localhost` y `127.0.0.1`, 1 año):
-
-```bash
-# Servidor HTTPS en el puerto 8443
-node -e "const https=require('https'),fs=require('fs');const t={'.html':'text/html','.css':'text/css','.js':'text/javascript','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2','.pdf':'application/pdf'};https.createServer({pfx:fs.readFileSync('.certs/localhost.pfx'),passphrase:'ilinizas2025'},(req,res)=>{let p=decodeURIComponent(req.url.split('?')[0]);if(p==='/')p='/index.html';const f=require('path').join(process.cwd(),p);fs.readFile(f,(e,d)=>{if(e){res.writeHead(404);return res.end();}res.writeHead(200,{'Content-Type':t[require('path').extname(f)]||'application/octet-stream'});res.end(d);});}).listen(8443,()=>console.log('HTTPS en https://localhost:8443'));"
-```
-
-Luego abre **https://localhost:8443** y acepta la advertencia del certificado autofirmado
-(botón "Avanzado → Continuar"). Para que el navegador confíe sin advertencia, instala
-`.certs/localhost.crt` en el almacén "Entidades de certificación de raíz de confianza".
-
-> Los certificados de `.certs/` son solo para desarrollo local y están excluidos de Git.
+HTTP en `127.0.0.1` es suficiente para revisar este portal estático. No se distribuyen certificados ni contraseñas de desarrollo dentro del repositorio.
 
 ### HTTPS en producción
 
@@ -164,8 +146,8 @@ puerto 443 está activo. Para garantizar un certificado válido y confiable en e
 
 ## Mejoras futuras sugeridas
 
-1. **Conectar el formulario de contacto** a un backend (Formspree, email JS, o endpoint propio).
-2. **Migrar los PDFs restantes** (Propuesta Pedagógica, Consentimientos, Contrato) a `assets/docs/`.
+1. Conectar el formulario de contacto a un endpoint propio si se requiere envío directo; actualmente prepara un correo real en la aplicación del visitante.
+2. Autoalojar las listas de útiles restantes si su tamaño y licencia lo permiten.
 3. Sustituir las ilustraciones SVG por fotografías reales del campus para mayor calidez.
-4. Añadir noticias/eventos del calendario escolar.
+4. Añadir noticias y eventos del calendario escolar mediante una fuente institucional mantenible.
 5. Desplegar detrás de un CDN y habilitar compresión gzip/brotli para máxima velocidad.

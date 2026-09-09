@@ -29,9 +29,9 @@
   <div class="topbar">
     <div class="container topbar__inner">
       <div class="topbar__contact">
-        <a class="topbar__item" href="tel:+593983476998" aria-label="Llamar a admisiones">
+        <a class="topbar__item" href="tel:+593983476998" aria-label="Llamar a admisiones: 098&nbsp;347&nbsp;6998">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Admisiones: 098 347 6998
+          Admisiones: 098&nbsp;347&nbsp;6998
         </a>
         <a class="topbar__item" href="mailto:colegioilinizas@hotmail.com">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
@@ -55,7 +55,7 @@
   <!-- ================= HEADER ================= -->
   <header class="header">
     <div class="container header__inner">
-      <a class="brand" href="index.html" aria-label="Colegio Los Ilinizas — Inicio">
+      <a class="brand" href="index.html" aria-label="Los Ilinizas Unidad Educativa Particular — Inicio">
         <img src="assets/img/logo-ilinizas.png" alt="Logo Colegio Los Ilinizas" width="412" height="129">
         <span class="brand__text">
           <span class="brand__name">Los Ilinizas</span>
@@ -63,7 +63,7 @@
         </span>
       </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú de navegación">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú de navegación">
         <span></span><span></span><span></span>
       </button>
 
@@ -84,7 +84,8 @@
               <a href="educacion-inicial.html">Educación Inicial <span>3–5 años</span></a>
               <a href="educacion-elemental.html">EGB Elemental <span>2º–4º</span></a>
               <a href="egb-media.html">EGB Media <span>5º–7º</span></a>
-              <a href="egb-superior.html">EGB Superior / BGU <span>8º–3º BGU</span></a>
+              <a href="egb-superior.html">EGB Superior <span>8º–10º</span></a>
+              <a href="bachillerato.html">Bachillerato <span>1º–3º BGU</span></a>
             </div>
           </li>
           <li class="nav__item">
@@ -168,20 +169,28 @@
           <p class="eyebrow eyebrow--center">Continúa tu camino</p>
           <h2 id="otros-title">Explora otros niveles</h2>
         </div>
-        <div class="programs__grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="programs__grid">
           <article class="program-card reveal">
+            <div class="program-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M10.5 6h3"/><circle cx="12" cy="10" r="3.5"/><path d="M6.5 21a5.5 5.5 0 0 1 11 0"/><path d="M2.5 16.5a4 4 0 0 1 4-4"/><path d="M21.5 16.5a4 4 0 0 0-4-4"/></svg>
+            </div>
+            <h3>Educación Inicial</h3>
+            <p class="program-card__desc">Un ambiente seguro y dinámico donde potenciamos habilidades desde los 3 años.</p>
+            <a class="link-arrow program-card__link" href="educacion-inicial.html">Conocer más
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </article>
+          <article class="program-card program-card--current reveal reveal--delay-1" aria-current="true">
             <div class="program-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             </div>
             <h3>EGB Elemental</h3>
             <p class="program-card__desc">Cimientos sólidos en valores y aprendizaje autónomo.</p>
-            <a class="link-arrow program-card__link" href="educacion-elemental.html">Conocer más
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            <span class="program-card__badge">Nivel actual</span>
           </article>
-          <article class="program-card reveal reveal--delay-1">
+          <article class="program-card reveal reveal--delay-2">
             <div class="program-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/><path d="M7.5 8h9"/></svg>
             </div>
             <h3>EGB Media</h3>
             <p class="program-card__desc">Habilidades comunicacionales y colaborativas.</p>
@@ -189,13 +198,23 @@
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </article>
-          <article class="program-card reveal reveal--delay-2">
+          <article class="program-card reveal reveal--delay-3">
             <div class="program-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
             </div>
-            <h3>EGB Superior / BGU</h3>
-            <p class="program-card__desc">Preparación para la educación superior.</p>
+            <h3>EGB Superior</h3>
+            <p class="program-card__desc">Análisis, proyectos y transición al Bachillerato.</p>
             <a class="link-arrow program-card__link" href="egb-superior.html">Conocer más
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </article>
+          <article class="program-card reveal">
+            <div class="program-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-5 9 5-9 5-9-5z"/><path d="M7 12.5V17c3 2 7 2 10 0v-4.5"/><path d="M21 10v6"/></svg>
+            </div>
+            <h3>Bachillerato BGU</h3>
+            <p class="program-card__desc">Pensamiento crítico y preparación para la educación superior.</p>
+            <a class="link-arrow program-card__link" href="bachillerato.html">Conocer más
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </article>
@@ -229,7 +248,6 @@
           <a href="index.html">Inicio</a>
           <a href="quienes-somos.html">Quiénes Somos</a>
           <a href="inscripciones.html">Inscripciones</a>
-          <a href="inscripciones.html">Inscripciones</a>
           <a href="lista-de-utiles.html">Listas de Útiles</a>
           <a href="contacto.html">Contacto</a>
           <a href="https://ilinizas.runacode.com/public/preinscripcionesweb" target="_blank" rel="noopener noreferrer">Preinscripción en línea</a>
@@ -243,7 +261,8 @@
           <a href="educacion-inicial.html">Educación Inicial</a>
           <a href="educacion-elemental.html">EGB Elemental</a>
           <a href="egb-media.html">EGB Media</a>
-          <a href="egb-superior.html">EGB Superior / BGU</a>
+          <a href="egb-superior.html">EGB Superior</a>
+          <a href="bachillerato.html">Bachillerato BGU</a>
         </div>
       </div>
 
@@ -256,7 +275,7 @@
           </div>
           <div class="footer__contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+593983476998">098 347 6998</a>
+            <a href="tel:+593983476998">098&nbsp;347&nbsp;6998</a>
           </div>
           <div class="footer__contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
@@ -274,10 +293,11 @@
     </div>
   </footer>
 
-  <button class="to-top" aria-label="Volver arriba">
+  <button class="to-top" type="button" aria-label="Volver arriba">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
   </button>
 
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
+
